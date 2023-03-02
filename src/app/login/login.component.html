@@ -1,0 +1,40 @@
+<div class="login-form-flex">
+  <mat-card>
+    <img class="image" src="https://avatars.githubusercontent.com/u/124091983" alt="Photo">
+    <div class="card">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <mat-card-content>
+          <mat-form-field appearance="outline">
+            <mat-label> Email</mat-label>
+            <input matInput formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            </div>
+          </mat-form-field>
+
+          <br />
+          <mat-form-field appearance="outline">
+            <mat-label> Password</mat-label>
+            <input matInput formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+              <div *ngIf="f['password'].errors['required']">Password is required</div>
+              <div *ngIf="f['password'].errors['minlength']">
+                Password must be at least 6 characters
+              </div>
+              <div *ngIf="f['password'].errors['maxlength']">
+                Password must not exceed 40 characters
+              </div>
+            </div>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="button-flex-container">
+            <button mat-raised-button color="warn" type="submit" class="buttonClass">LOGIN</button>
+          </div>
+        </mat-card-actions>
+      </form>
+    </div>
+  </mat-card>
+</div>
